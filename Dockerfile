@@ -21,8 +21,12 @@ COPY . /var/www/html
 # Set the working directory
 WORKDIR /var/www/html
 
+# Set the proper permissions
+RUN chown -R www-data:www-data /var/www/html
+
 # Expose port 80
 EXPOSE 80
 
 # Start Nginx and PHP-FPM via Supervisor
 CMD ["/usr/bin/supervisord"]
+
